@@ -1,4 +1,4 @@
- 
+
 def factura = new XmlSlurper().parse("archivo.xml")
 factura.declareNamespace(cfdi:'http://www.sat.gob.mx/cfd/3')
 
@@ -62,6 +62,6 @@ factura.Impuestos.Traslados.'cfdi:Traslado'.each{
 			tasa:it.'@tasa']
 }
 
-ivaEnte = iva.iva
-println ivaEnte.toInteger()
+
+
 
