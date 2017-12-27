@@ -1,4 +1,4 @@
-class leeyendoFactura{	
+class LeeyendoFactura{	
 	def factura = new XmlSlurper().parse("archivo.xml")
 	factura.declareNamespace(cfdi:'http://www.sat.gob.mx/cfd/3')
 
