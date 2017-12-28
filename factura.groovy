@@ -1,9 +1,9 @@
-class Facturacion{ Factura 
+class Facturacion{ Factura
 
 	Emisor emisor
 	Cliente cliente
 	List<Concepto> concepto = []
-	Double subtotal	
-	Integer iva
+	Double subtotal
+	Double iva
 	Double total
 }
