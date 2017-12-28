@@ -1,10 +1,20 @@
 class LeeyendoFactura{	
-	def factura = new XmlSlurper().parse("archivo.xml")
-	factura.declareNamespace(cfdi:'http://www.sat.gob.mx/cfd/3')
 
-	def conceptos = [:]
-	factura.Conceptos.'cfdi:Concepto'.each{ 
+	def xml = new File('archivo.xml')
+	
+	def readFactura(def archivo){
+		def factura = new XmlSlurper().parse(archivo)
+		factura.declareNamespace(cfdi:'http://www.sat.gob.mx/cfd/3')
+		return factura 
+	}
+
+	def lectura = readFactura(xml)
+
+	def getConceptos(){
+		def conceptos = [:]
+		factura.Conceptos.'cfdi:Concepto'.each{ 
 		conceptos.put(it.'@descripcion',it.'@importe')
+		}
 	}
 
 	def receptor = [:]
