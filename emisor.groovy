@@ -1,5 +1,5 @@
 class Emisor{
   String razonSocial
   String rfc 
-  List <direccionEmisor> direccionEmisor = []
+  List <direccion> direccion = []
 }
