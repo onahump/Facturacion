@@ -1,4 +1,5 @@
 class DireccionEmisor{
+  Boolean tipo
   String calle
   String noExterior
   String noInterior
