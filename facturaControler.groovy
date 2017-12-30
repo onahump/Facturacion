@@ -1,4 +1,4 @@
-class LeeyendoFactura{	
+class FacturaControler{	
 
 	def xml = new File('archivo.xml')
 	xml.declareNamespace(cfdi:'http://www.sat.gob.mx/cfd/3')
