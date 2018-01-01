@@ -1,12 +1,8 @@
-class FacturaControler{	
+class Service{	
 
-	def xml = new File('archivo.xml')
-	xml.declareNamespace(cfdi:'http://www.sat.gob.mx/cfd/3')
-
-
-	def readFactura(def factura){
-		def factura = new XmlSlurper().parse(archivo)
-		return factura 
+	def readFacturaXML(){
+		def factura = new XmlSlurper().parse(new File('archivo.xml'))
+		factura.declareNamespace(cfdi:'http://www.sat.gob.mx/cfd/3')
 	}	
 
 	def getConceptos(def readConcepto){
@@ -74,16 +70,12 @@ class FacturaControler{
 		return direccionReceptor
 	}
 
-	def newFactura = readFactura(xml)
 	def conceptosDeFactura = getConceptos(newFactura)
 	def recepor = getReceptor(newFactura)
 	def emisor = getEmisor(newFactura)
 	def iva = getIva(newFactura)
 	def direccionEmisor = getDireccionEmisor(newFactura)
 	def direccionReceptor = getDireccionReceptor(newFactura)
-
-
-
 }
 
 
