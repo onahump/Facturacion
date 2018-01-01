@@ -1,5 +1,4 @@
-class Facturacion{ Factura
-
+class Factura{
 	Emisor emisor
 	Cliente cliente
 	List<Concepto> concepto = []
