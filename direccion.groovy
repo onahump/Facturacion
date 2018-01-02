@@ -11,7 +11,7 @@ class Direccion{
   String pais
 
   String darDireccion(){
-    "${tipo}, ${calle} ,${noExterior}, ${noInterior}, ${cPostal},${colonia}, ${municipio}, ${estado},${pais}"
+    "${calle} ,${noExterior}, ${noInterior}, ${cPostal},${colonia}, ${municipio}, ${estado},${pais}"
   }
 }
 
