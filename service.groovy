@@ -1,7 +1,9 @@
+package clasess
+
 class Service{	
 
 	def readFacturaXML(){
-		def factura = new XmlSlurper().parse(new File('archivo.xml'))
+		def factura = new XmlSlurper().parse(new File('source/archivo.xml'))
 		factura.declareNamespace(cfdi:'http://www.sat.gob.mx/cfd/3')
 	}	
 

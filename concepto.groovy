@@ -1,3 +1,5 @@
+package clasess
+
 class Concepto{
 	Integer cantidad
 	String Descripcion 

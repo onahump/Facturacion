@@ -1,5 +1,7 @@
+package clasess
+
 class Receptor{
   String razonSocial
   String rfc 
-  List <direccion> direccion = []
+  List <Direccion> direccion = []
 }

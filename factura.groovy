@@ -1,6 +1,8 @@
+package clasess
+
 class Factura{
 	Emisor emisor
-	Cliente cliente
+	Receptor receptor
 	List<Concepto> concepto = []
 	Float subtotal
 	Float iva

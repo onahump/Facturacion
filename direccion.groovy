@@ -1,4 +1,6 @@
-class DireccionEmisor{
+package clasess
+
+class Direccion{
   Boolean tipo
   String calle
   String noExterior
@@ -9,8 +11,8 @@ class DireccionEmisor{
   String localidad
   String pais
 
-  String darDireccion{
-    "${calle} ${numero}, ${cPostal},${municipio},${estado},${pais}"
+  void darDireccion(){
+    "${tipo}, ${calle} ,${noExterior}, ${noInterior}, ${cPostal},${colonia}, ${localidad}, ${estado},${pais}"
   }
 }
 
