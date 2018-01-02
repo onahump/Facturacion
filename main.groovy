@@ -12,5 +12,7 @@ Direccion direccionReceptor = new Direccion(calle:"Calzada Ermita Iztapalapa", n
 Concepto concepto1 = new Concepto(cantidad:1, descripcion:"Cocacola 135ml",importe:15.93)
 Concepto concepto2 = new Concepto(cantidad:2, descripcion:"Chetos",importe:10.20)
 def listaDeConceptos = [concepto1,concepto2]
+def getSubtotal(listaDeConceptos)
 
-Factura factura1 = new Factura(emisor:emisor1, receptor:receptor1 concepto:lista) 
+
+println receptor1

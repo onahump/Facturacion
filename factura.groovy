@@ -9,7 +9,7 @@ class Factura{
 	Float total
 
 	Float getSubtotal(List subtotal){
-
+		
 	}
 
 	Float getIva(List total){

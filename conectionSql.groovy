@@ -1,4 +1,4 @@
-package clasess
+package classes
 
 import java.sql.*
 @Grab('mysql:mysql-connector-java:5.1.25')
@@ -7,5 +7,5 @@ import groovy.sql.Sql
 
 @Singleton
 class SqlConection {
-  def sql =  Sql.newInstance("jdbc:mysql://localhost:3306/facturas","root","makingdevs", "com.mysql.jdbc.Driver")
+  def sql =  Sql.newInstance("jdbc:mysql://localhost/facturas","root","makingdevs", "com.mysql.jdbc.Driver")
 }
