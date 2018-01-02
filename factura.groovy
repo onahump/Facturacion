@@ -1,22 +1,24 @@
 package classes
 
 class Factura{
-	Emisor emisor
-	Receptor receptor
+	Date fecha = new Date()
+	String nombreDelEmisor
+	String nombreDelReceptor
 	List<Concepto> concepto = []
-	Float subtotal
-	Float iva
-	Float total
+	Double subtotal
+	Double iva
+	Double total
 
-	Float getSubtotal(List subtotal){
-		
+	Double getSubtotal(){
+		concepto[0].importe + concepto[1].importe
 	}
 
-	Float getIva(List total){
-		
+	Double getIva(){
+		subtotal * 0.16		
 	}
 
-	Float getTotal(List total){
+	Double getTotal(){
+		subtotal + iva
 	}
 
 }
