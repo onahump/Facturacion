@@ -1,4 +1,4 @@
-package clasess
+package classes
 
 class Factura{
 	Emisor emisor
@@ -7,4 +7,17 @@ class Factura{
 	Float subtotal
 	Float iva
 	Float total
+
+	Float getSubtotal(List subtotal){
+
+	}
+
+	Float getIva(List total){
+		
+	}
+
+	Float getTotal(List total){
+	}
+
 }
+

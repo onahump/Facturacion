@@ -1,19 +1,17 @@
-package clasess
+package classes
 
 class Direccion{
-  Boolean tipo
   String calle
   String noExterior
   String noInterior
   String cPostal
   String colonia
   String estado
-  String localidad
+  String municipio
   String pais
 
-  void darDireccion(){
-    "${tipo}, ${calle} ,${noExterior}, ${noInterior}, ${cPostal},${colonia}, ${localidad}, ${estado},${pais}"
+  String darDireccion(){
+    "${tipo}, ${calle} ,${noExterior}, ${noInterior}, ${cPostal},${colonia}, ${municipio}, ${estado},${pais}"
   }
 }
-
 

@@ -1,8 +1,11 @@
-package clasess
+package classes
 
 class Concepto{
 	Integer cantidad
-	String Descripcion 
+	String descripcion 
 	Float importe
-	Float subtotal
+
+	def getSubtotal(Float subtotal){
+		subtotal += importe
+	}
 }

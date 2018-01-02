@@ -1,7 +1,8 @@
-package clasess
+package classes
 
 class Emisor{
   String razonSocial
   String rfc 
-  List <Direccion> direccion = []
+  String direccion
 }
+
