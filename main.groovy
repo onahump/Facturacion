@@ -5,8 +5,8 @@ import java.sql.*
 @GrabConfig(systemClassLoader = true)
 import groovy.sql.Sql
 
-
-SqlConection sql = SqlConection.getInstance()
+listaDeFacturas = []
+SqlConection sql = SqlConection.getInstance() //Estableciendo conecion con la base de datos
 
 Direccion direccionEmisor = new Direccion(calle:"Rodolfo Gaona", noExterior:"86",noInterior:"E",cPostal:"11200",colonia:"El Carmen", estado:"CDMX",municipio:"Coyoacan",pais:"México")
 Emisor emisor1 = new Emisor(razonSocial:"LA EUROPEA MEXICO, S.A.P.I DE C.V.",rfc:"EME910610G1A")
@@ -47,5 +47,9 @@ println "\n"
 println "*"*60
 println "\n"
 
+// Base de datos 
+	
+String valores = "('2018-01-03', '${factura1.nombreDelEmisor}', '${factura1.nombreDelReceptor}', '${factura1.subtotal}', '${factura1.iva}', '${factura1.total}')"
+sql.insertandoIntoTable(valores)
 sql.consultTable()
-
+//sql.execute(comandoInsert)
