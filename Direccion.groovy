@@ -8,8 +8,13 @@ class Direccion{
   String municipio
   String pais
 
-  String darDireccion(){
-    "${calle} ,${noExterior}, ${noInterior}, ${cPostal},${colonia}, ${municipio}, ${estado},${pais}"
+  String toString(){
+    """\
+    ${calle} ,${noExterior}, ${noInterior}, 
+    ${colonia}, ${cPostal}, 
+    ${municipio}, 
+    ${estado},${pais}
+    """
   }
 }
 

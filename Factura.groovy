@@ -1,14 +1,14 @@
 class Factura{
 	Date fecha = new Date()
 	Emisor emisor
-	Receptor Receptor
+	Receptor receptor
 	List<Concepto> conceptos = []
 	Double subtotal
 	Double iva
 	Double total
 
 	Double getSubtotal(){
-		concepto[0].importe + concepto[1].importe
+		conceptos[0].importe + conceptos[1].importe
 	}
 
 	Double getIva(){
