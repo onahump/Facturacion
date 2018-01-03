@@ -1,10 +1,6 @@
-import java.sql.*
-@Grab('mysql:mysql-connector-java:5.1.25')
-@GrabConfig(systemClassLoader = true)
-import groovy.sql.Sql
+
 
 listaDeFacturas = []
-SqlConection sql = SqlConection.getInstance() //Estableciendo conecion con la base de datos
 
 Direccion direccionEmisor = new Direccion(calle:"Rodolfo Gaona", noExterior:"86",noInterior:"E",cPostal:"11200",colonia:"El Carmen", estado:"CDMX",municipio:"Coyoacan",pais:"México")
 Emisor emisor1 = new Emisor(razonSocial:"LA EUROPEA MEXICO, S.A.P.I DE C.V.",rfc:"EME910610G1A")
@@ -45,11 +41,6 @@ println "\n"
 println "*"*60
 println "\n"
 
-// Base de datos 
 	
 println factura1.dump()
 
-String valores = "insert into factura (fecha, nombre_del_emisor, nombre_del_receptor, subtotal, iva, total) values ('${factura1.fecha}', '${factura1.nombreDelEmisor}', '${factura1.nombreDelReceptor}', ${factura1.subtotal.round(2)}, '${factura1.iva.round(2)}', '${factura1.total.round(2)}')"
-sql.insertandoIntoTable(valores)
-//sql.consultTable()
-//sql.execute(comandoInsert)
