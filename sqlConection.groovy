@@ -19,8 +19,8 @@ class SqlConection {
   }
 
   void insertandoIntoTable(String valores){
-  	def comandoInsert = """ insert into factura (fecha,nombre_del_emisor, nombre_del_receptor, subtotal, iva, total) values ${valores}"""
-  	sql.excecute(comandoInsert)
+  	//String comandoInsert = " insert into factura (fecha,nombre_del_emisor, nombre_del_receptor, subtotal, iva, total) values ${valores}"
+  	sql.execute("insert into factura (fecha, nombre_del_emisor, nombre_del_receptor, subtotal, iva, total) values ${valores}")
   }
 
 

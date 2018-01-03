@@ -49,7 +49,8 @@ println "\n"
 
 // Base de datos 
 	
-String valores = "('2018-01-03', '${factura1.nombreDelEmisor}', '${factura1.nombreDelReceptor}', '${factura1.subtotal}', '${factura1.iva}', '${factura1.total}')"
+String valores = "('2018-01-03', '${factura1.nombreDelEmisor}', '${factura1.nombreDelReceptor}', '10', '1', '11')"
+println valores
 sql.insertandoIntoTable(valores)
-sql.consultTable()
+//sql.consultTable()
 //sql.execute(comandoInsert)
