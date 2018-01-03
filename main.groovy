@@ -1,5 +1,3 @@
-package classes
-
 import java.sql.*
 @Grab('mysql:mysql-connector-java:5.1.25')
 @GrabConfig(systemClassLoader = true)
@@ -22,9 +20,9 @@ def listaDeConceptos = [concepto1,concepto2]
 
 //Instanciando la factura numero 1 y agregando elementos a sus atributos"
 Factura factura1 = new Factura(
-							   nombreDelEmisor:emisor1.razonSocial, 
+							   emisor:emisor1, 
 							   nombreDelReceptor:receptor1.razonSocial, 
-							   concepto:listaDeConceptos)
+							   conceptos:listaDeConceptos)
 factura1.subtotal = factura1.getSubtotal()
 factura1.iva = factura1.getIva()
 factura1.total = factura1.getTotal()
@@ -49,7 +47,7 @@ println "\n"
 
 // Base de datos 
 	
-
+println factura1.dump()
 
 String valores = "insert into factura (fecha, nombre_del_emisor, nombre_del_receptor, subtotal, iva, total) values ('${factura1.fecha}', '${factura1.nombreDelEmisor}', '${factura1.nombreDelReceptor}', ${factura1.subtotal.round(2)}, '${factura1.iva.round(2)}', '${factura1.total.round(2)}')"
 sql.insertandoIntoTable(valores)

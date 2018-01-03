@@ -1,5 +1,3 @@
-package classes
-
 class Direccion{
   String calle
   String noExterior

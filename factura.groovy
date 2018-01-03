@@ -1,10 +1,8 @@
-package classes
-
 class Factura{
 	Date fecha = new Date()
-	String nombreDelEmisor
-	String nombreDelReceptor
-	List<Concepto> concepto = []
+	Emisor emisor
+	Receptor Receptor
+	List<Concepto> conceptos = []
 	Double subtotal
 	Double iva
 	Double total

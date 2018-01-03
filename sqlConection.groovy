@@ -1,5 +1,3 @@
-package classes
-
 import java.sql.*
 @Grab('mysql:mysql-connector-java:5.1.25')
 @GrabConfig(systemClassLoader = true)
