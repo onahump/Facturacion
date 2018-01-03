@@ -7,7 +7,7 @@ import groovy.sql.Sql
 
 @Singleton
 class SqlConection {
-  def sql =  Sql.newInstance("jdbc:mysql://localhost:3306/prueba","root","makingdevs", "com.mysql.jdbc.Driver")
+  def sql =  Sql.newInstance("jdbc:mysql://localhost:3306/facturas","root","makingdevs", "com.mysql.jdbc.Driver")
 
   void consultTable(){
   	sql.eachRow('select * from factura') {
