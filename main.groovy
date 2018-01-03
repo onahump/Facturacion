@@ -20,7 +20,7 @@ Concepto concepto1 = new Concepto(cantidad:1, descripcion:"Coca-cola 135ml",impo
 Concepto concepto2 = new Concepto(cantidad:2, descripcion:"Chetos",importe:249.301724)    
 def listaDeConceptos = [concepto1,concepto2]
 
-
+//Instanciando la factura numero 1 y agregando elementos a sus atributos"
 Factura factura1 = new Factura(
 							   nombreDelEmisor:emisor1.razonSocial, 
 							   nombreDelReceptor:receptor1.razonSocial, 
@@ -29,8 +29,23 @@ factura1.subtotal = factura1.getSubtotal()
 factura1.iva = factura1.getIva()
 factura1.total = factura1.getTotal()
 
-println "*"*25 + "FACTURA" + "*"*25
+
+//Imprimiendo la factura
+println "\n"
+println "*"*26 + "FACTURA" + "*"*27
+println "\n"
 println "Nombre del Emisor: ${factura1.nombreDelEmisor}"
+println "Nombre del Receptor: ${factura1.nombreDelReceptor}"
+println "Concepto(s)"
+println "Cantidad: ${factura1.concepto[0].cantidad}  Descripcion: ${factura1.concepto[0].descripcion} Importe: ${factura1.concepto[0].importe}"
+println "Cantidad: ${factura1.concepto[1].cantidad}  Descripcion: ${factura1.concepto[1].descripcion} 	  Importe: ${factura1.concepto[1].importe}"
+println "\n"
+println "				  Subtotal:${factura1.subtotal}"
+println "			                 Iva: ${factura1.iva}"
+println "				    Total: ${factura1.total}"
+println "\n"
+println "*"*60
+println "\n"
 
 sql.consultTable()
 
