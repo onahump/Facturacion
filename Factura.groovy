@@ -4,6 +4,10 @@ class Factura{
 	Receptor receptor
 	List<Concepto> conceptos = []
 
+	String getFechaConFormato(){
+		fecha.format('yyyy-dd-MM')
+	}
+
 	Double getSubtotal(){
 		(conceptos[0]?.importe ?:0) + (conceptos[1]?.importe ?:0)
 	}
@@ -19,7 +23,7 @@ class Factura{
 	String toString(){
 		"""\
 
-		${'*'*26} ${fecha.format('dd/MM/yyyy')} ${'*'*26}
+		${'*'*26} ${fechaConFormato} ${'*'*26}
 
 		Nombre del Emisor: ${emisor}
 		Nombre del Receptor: ${receptor}
@@ -31,7 +35,7 @@ class Factura{
 					                 Iva: \$ ${iva}
 						    Total: \$ ${total}
 
-		${'*'*52}
+		${'*'*65}
 		"""
 	}
 
