@@ -37,7 +37,7 @@ receptor.direccion = direccionDelReceptor
 Concepto concepto1 = new Concepto(cantidad:1, 
 								  descripcion:"Coca-cola 135ml",
 								  importe:372.267241)
-Concepto concepto2 = new Concepto(cantidad:2, 
+Concepto concepto2 = new Concepto(cantidad:1, 
 								  descripcion:"Chetos",
 								  importe:249.301724)    
 
