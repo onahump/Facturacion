@@ -74,8 +74,8 @@ listaDeFacturas = [factura1,factura2]
 ContadorPublico yarey = new ContadorPublico(facturas:listaDeFacturas)
 
 
-println yarey.enviarFacturaALaBaseDeDatos()
-Factura factura3 = yarey.quieroLaFactura(5)
+yarey.enviarFacturasALaBaseDeDatos()
+//Factura factura3 = yarey.quieroLaFactura(5)
 
 //println factura2
 //println new Factura()
