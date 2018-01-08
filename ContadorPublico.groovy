@@ -1,5 +1,12 @@
+import java.sql.*
+@Grab('mysql:mysql-connector-java:5.1.25')
+@GrabConfig(systemClassLoader = true)
+import groovy.sql.Sql
+
 class ContadorPublico{
 	List<Factura> facturas
+
+	SqlConection sql = SqlConection.getInstance() //Estableciendo conecion con la base de datos
 
 	def enviarFacturasALaBaseDeDatos(){
 		println "('${facturas[0].fechaConFormato}', '${facturas[0].emisor}', '${facturas[0].receptor}','${facturas[0].subtotal}', '${facturas[0].iva}', '${facturas[0].total}')"
