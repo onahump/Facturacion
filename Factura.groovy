@@ -9,7 +9,8 @@ class Factura{
 	}
 
 	Double getSubtotal(){
-		(conceptos[0]?.importe ?:0) + (conceptos[1]?.importe ?:0)
+		conceptos.importe.sum()
+		//(conceptos[0]?.importe ?:0) + (conceptos[1]?.importe ?:0)
 	}
 
 	Double getIva(){
@@ -21,8 +22,7 @@ class Factura{
 	}
 
 	String toString(){
-		"""\
-
+		"""\n
 		${'*'*26} ${fechaConFormato} ${'*'*26}
 
 		Nombre del Emisor: ${emisor}
@@ -30,6 +30,8 @@ class Factura{
 		Concepto(s)
 		${conceptos[0]}
 		${conceptos[1]}
+		${conceptos[2]?:""} 
+
 
 						  Subtotal: \$ ${subtotal}
 					                 Iva: \$ ${iva}
