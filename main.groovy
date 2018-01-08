@@ -44,21 +44,21 @@ receptor2.direccion = direccionDelReceptor
 
 Concepto concepto1 = new Concepto(cantidad:1, 
 								  descripcion:"Coca-cola 135ml",
-								  importe:372.267241)
+								  importe:10.15)
 Concepto concepto2 = new Concepto(cantidad:1, 
 								  descripcion:"Chetos",
-								  importe:249.301724)   
+								  importe:12.13)   
 
 Concepto concepto3 = new Concepto(cantidad:1, 
-								  descripcion:"Coca-cola 135ml",
-								  importe:372.267241)
+								  descripcion:"Chicles 100g",
+								  importe:2.56)
 Concepto concepto4 = new Concepto(cantidad:1, 
-								  descripcion:"Chetos",
-								  importe:249.301724)   
+								  descripcion:"Sabritas Adobadas 250g",
+								  importe:6.50)   
 
 def listaDeConceptosFactura1 = [concepto1,concepto2]
 
-def listaDeConceptosFactura2 = [concepto2,concepto3]
+def listaDeConceptosFactura2 = [concepto2,concepto3,concepto4]
 //Instanciando la factura numero 1 y agregando elementos a sus atributos"
 Factura factura1 = new Factura(
 							   emisor:emisor, 
@@ -71,11 +71,12 @@ Factura factura2 = new Factura(
 
 listaDeFacturas = [factura1,factura2]
 
-ContadorPublico yarey = new ContadorPublico(facturas:listaDeFacturas)
+ContadorPublico yarey = new ContadorPublico()
 
 
-yarey.enviarFacturasALaBaseDeDatos()
+println yarey.dimeTodasLasRazonesSociales()
+
 //Factura factura3 = yarey.quieroLaFactura(5)
-
+//println factura1
 //println factura2
 //println new Factura()
