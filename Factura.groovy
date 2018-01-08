@@ -20,5 +20,24 @@ class Factura{
 		subtotal + iva
 	}
 
+	String toString(){
+		"""\
+
+		${'*'*26} ${fechaConFormato} ${'*'*26}
+
+		Nombre del Emisor: ${emisor}
+		Nombre del Receptor: ${receptor}
+		Concepto(s)
+		${conceptos[0]}
+		${conceptos[1]}
+
+						  Subtotal: \$ ${subtotal}
+					                 Iva: \$ ${iva}
+						    Total: \$ ${total}
+
+		${'*'*65}
+		"""
+	}
+
 }
 
