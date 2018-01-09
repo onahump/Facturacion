@@ -71,12 +71,8 @@ Factura factura2 = new Factura(
 
 listaDeFacturas = [factura1,factura2]
 
+
+//Llamando a yarey 
 ContadorPublico yarey = new ContadorPublico()
-
-
-println yarey.dimeTodasLasRazonesSociales()
-
-//Factura factura3 = yarey.quieroLaFactura(5)
-//println factura1
-//println factura2
-//println new Factura()
+yarey.registraLaFactura(factura1)
+//Factura factura3 = yarey.quieroLaFactura()
