@@ -33,9 +33,9 @@ class Factura{
 		${conceptos[2]?:""} 
 
 
-						  Subtotal: \$ ${subtotal}
-					                 Iva: \$ ${iva}
-						    Total: \$ ${total}
+						  Subtotal: \$ ${subtotal.round(2)}
+					                 Iva: \$ ${iva.round(2)}
+						    Total: \$ ${total.round(2)}
 
 		${'*'*65}
 		"""
