@@ -4,20 +4,21 @@ class Factura{
 	InvoiceEntity receptor
 	List<Concepto> conceptos = []
 
+
 	String getFechaConFormato(){
 		fecha.format('yyyy-dd-MM')
 	}
 
-	Double getSubtotal(){
+	BigDecimal getSubtotal(){
 		conceptos.importe.sum()
 		//(conceptos[0]?.importe ?:0) + (conceptos[1]?.importe ?:0)
 	}
 
-	Double getIva(){
-		subtotal * 0.16		
+	BigDecimal getIva(){
+		subtotal * 0.16	 	
 	}
 
-	Double getTotal(){
+	BigDecimal getTotal(){
 		subtotal + iva
 	}
 
@@ -33,9 +34,9 @@ class Factura{
 		${conceptos[2]?:""} 
 
 
-						  Subtotal: \$ ${subtotal.round(2)}
-					                 Iva: \$ ${iva.round(2)}
-						    Total: \$ ${total.round(2)}
+						  	Subtotal: \$ ${subtotal}
+					               	Iva: \$ ${iva}
+						     	Total: \$ ${total}
 
 		${'*'*65}
 		"""
