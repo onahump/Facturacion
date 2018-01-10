@@ -69,10 +69,12 @@ Factura factura2 = new Factura(
 							   receptor:receptor2, 
 							   conceptos:listaDeConceptosFactura2)
 
-listaDeFacturas = [factura1,factura2]
-
+//listaDeFacturas = [factura1,factura2]
 
 //Llamando a yarey 
+
 ContadorPublico yarey = new ContadorPublico()
-yarey.registraLaFactura(factura1)
-//Factura factura3 = yarey.quieroLaFactura()
+//yarey.registraLaFactura(factura2)
+//println yarey.quieroLaFactura(2)
+Factura factura3 = yarey.quieroLaFactura(2)
+println factura3
