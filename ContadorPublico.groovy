@@ -9,7 +9,7 @@ class ContadorPublico{
 	def sql = Sql.newInstance(db.url, db.user, db.pass, db.driver)	
 
 	String registraLaFactura(def factura){
-		def comandoInsert = "insert into factura (fecha,nombre_del_emisor, nombre_del_receptor, subtotal, iva, total) values ('${factura.fecha.format('yyyy-dd-MM')}', '${factura.emisor}', '${factura.receptor}', '${factura.subtotal.round(2)}', '${factura.iva.round(2)}', '${factura.total.round(2)}')"
+		String comandoInsert = "insert into factura (fecha, nombre_del_emisor, emisor_rfc, nombre_del_receptor, receptor_rfc, subtotal, iva, total) values ('${factura.fecha.format('yyyy-dd-MM')}', '${factura.emisor.razonSocial}', '${factura.emisor.rfc}', '${factura.receptor.razonSocial}', '${factura.receptor.rfc}', '${factura.subtotal}', '${factura.iva}', '${factura.total}')"
   		sql.execute(comandoInsert)
 	}
 
@@ -17,8 +17,8 @@ class ContadorPublico{
 		String consultaPorId = "select * from factura WHERE id = ${value}"
 		def parseo = sql.rows(consultaPorId)
 
-		def emisor =  new InvoiceEntity(razonSocial:parseo.nombre_del_emisor.first())
-		def receptor =  new InvoiceEntity(razonSocial:parseo.nombre_del_receptor.first())
+		def emisor =  new InvoiceEntity(razonSocial:parseo.nombre_del_emisor.first(), rfc:parseo.emisor_rfc.first() )
+		def receptor =  new InvoiceEntity(razonSocial:parseo.nombre_del_receptor.first(),rfc:parseo.receptor_rfc.first() )
 		
 		def fecha = new Date()
 		Concepto concepto2 = new Concepto(cantidad:1, 
