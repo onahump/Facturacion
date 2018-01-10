@@ -13,34 +13,24 @@ class ContadorPublico{
   		sql.execute(comandoInsert)
 	}
 
-	def quieroLaFactura(def value){
-		//String consultaPorId = "select * from factura WHERE id = ${value}"
-		def empresas = []
-		sql.eachRow('select * from factura'){
-		    def emisor = new InvoiceEntity(razonSocial:it.nombre_del_emisor)
-		    def receptor = new InvoiceEntity(razonSocial:it.nombre_del_receptor)
-		    def ie = new Factura(emisor:emisor,
-								 receptor:receptor)
+	Factura quieroLaFactura(def value){
+		String consultaPorId = "select * from factura WHERE id = ${value}"
+		def parseo = sql.rows(consultaPorId)
 
-		    empresas << ie
-		}
-		empresas
-		//def objecto = sql.execute(consultaPorId)
-		/*sql.eachRow(consultaPorId){
-		def ie = new Factura(fecha:fecha,
-							 emisor:it.nombre_del_emisor, 
-							 receptor:it.nombre_del_emisor,
-							 subtotal:it.subtotal,
-							 iva:it.iva,
-							 total:it.total)
-		}
-		ie*/
+		def emisor =  new InvoiceEntity(razonSocial:parseo.nombre_del_emisor.first())
+		def receptor =  new InvoiceEntity(razonSocial:parseo.nombre_del_receptor.first())
+		
+		def fecha = new Date()
+		Concepto concepto2 = new Concepto(cantidad:1, 
+								  descripcion:"Chetos",
+								  importe:12.13)  
+		def listaDeConceptos = [concepto2]
+
+		def factura = new Factura(fecha:fecha,
+								  emisor:emisor,
+								  receptor:receptor,
+								  conceptos:listaDeConceptos)
+		factura
 	}
 	
 }	
-
-/*
-String valores = "('2018-01-03', '${factura1.nombreDelEmisor}', '${factura1.nombreDelReceptor}', '${factura1.subtotal}', '${factura1.iva}', '${factura1.total}')"
-sql.insertandoIntoTable(valores)
-sql.consultTable()
-sql.execute(comandoInsert)*/
