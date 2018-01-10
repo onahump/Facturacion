@@ -20,13 +20,12 @@ class ContadorPublico{
 		def emisor =  new InvoiceEntity(razonSocial:parseo.nombre_del_emisor.first(), rfc:parseo.emisor_rfc.first() )
 		def receptor =  new InvoiceEntity(razonSocial:parseo.nombre_del_receptor.first(),rfc:parseo.receptor_rfc.first() )
 		
-		def fecha = new Date()
 		Concepto concepto2 = new Concepto(cantidad:1, 
-								  descripcion:"Chetos",
-								  importe:12.13)  
+								  		  descripcion:"Chetos",
+								  		  importe:12.13)  
 		def listaDeConceptos = [concepto2]
 
-		def factura = new Factura(fecha:fecha,
+		def factura = new Factura(fecha:parseo.fecha.first(),
 								  emisor:emisor,
 								  receptor:receptor,
 								  conceptos:listaDeConceptos)
