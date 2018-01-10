@@ -74,7 +74,12 @@ Factura factura2 = new Factura(
 //Llamando a yarey 
 
 ContadorPublico yarey = new ContadorPublico()
-//yarey.registraLaFactura(factura2)
-//println yarey.quieroLaFactura(2)
+
+//Yarey registrame esta factura porfavorzzzzzzz
+
+//yarey.registraLaFactura(factura1)
+
+//Yarey quiero la factura 'X' por favooorzzzzz
+
 Factura factura3 = yarey.quieroLaFactura(2)
 println factura3
