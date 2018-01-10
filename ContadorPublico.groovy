@@ -17,15 +17,15 @@ class ContadorPublico{
 		String consultaPorId = "select * from factura WHERE id = ${value}"
 		def parseo = sql.rows(consultaPorId)
 
-		def emisor =  new InvoiceEntity(razonSocial:parseo.nombre_del_emisor.first(), rfc:parseo.emisor_rfc.first() )
-		def receptor =  new InvoiceEntity(razonSocial:parseo.nombre_del_receptor.first(),rfc:parseo.receptor_rfc.first() )
+		InvoiceEntity emisor =  new InvoiceEntity(razonSocial:parseo.nombre_del_emisor.first(), rfc:parseo.emisor_rfc.first() )
+		InvoiceEntity receptor =  new InvoiceEntity(razonSocial:parseo.nombre_del_receptor.first(),rfc:parseo.receptor_rfc.first() )
 		
 		Concepto concepto2 = new Concepto(cantidad:1, 
 								  		  descripcion:"Chetos",
 								  		  importe:12.13)  
 		def listaDeConceptos = [concepto2]
 
-		def factura = new Factura(fecha:parseo.fecha.first(),
+		Factura factura = new Factura(fecha:parseo.fecha.first(),
 								  emisor:emisor,
 								  receptor:receptor,
 								  conceptos:listaDeConceptos)
