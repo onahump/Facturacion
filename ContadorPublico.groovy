@@ -9,12 +9,14 @@ class ContadorPublico{
 	def sql = Sql.newInstance(db.url, db.user, db.pass, db.driver)	
 
 	String registraLaFactura(Factura factura){
-		String insertandoFactura = "insert into factura (fecha, emisor, rfc_emisor, receptor, rfc_receptor, subtotal, iva, total) values ('${factura.fecha.format('yyyy-dd-MM')}', '${factura.emisor.razonSocial}', '${factura.emisor.rfc}', '${factura.receptor.razonSocial}', '${factura.receptor.rfc}', '${factura.subtotal}', '${factura.iva}', '${factura.total}')"
+		String insertandoFactura = "insert into factura (fecha, emisor, rfc_emisor, receptor, rfc_receptor) values ('${factura.fecha.format('yyyy-MM-dd')}', '${factura.emisor.razonSocial}', '${factura.emisor.rfc}', '${factura.receptor.razonSocial}', '${factura.receptor.rfc}')"
   		sql.execute(insertandoFactura)
-  		/*factura.conceptos.each{ 
-            sql.execute("insert into concepto (cantidad, descripcion, importe) values ('${it.cantidad}','${it.descripcion}', '${it.importe}')");
-   	  		
-        }*/
+  		def ultimoIdRegistrado = sql.rows("SELECT LAST_INSERT_ID()")
+        String parseoDelUltimoIdRegistrado = ultimoIdRegistrado
+       	String id = parseoDelUltimoIdRegistrado.findAll(/\d+/).first()
+  		factura.conceptos.each{ 
+            sql.execute("insert into concepto (cantidad, descripcion, importe,cve_factura) values ('${it.cantidad}','${it.descripcion}', '${it.importe}', '${id}')")
+        }
   	}
 
 	Factura quieroLaFactura(def value){
