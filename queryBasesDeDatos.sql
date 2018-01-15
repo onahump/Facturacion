@@ -5,9 +5,6 @@ emisor  varchar(45) NOT NULL,
 rfc_emisor  varchar(45) NOT NULL,
 receptor  varchar(45) NOT NULL,
 rfc_receptor  varchar(45) NOT NULL,
-subtotal float(7,2) NOT null,
-iva float(7,2) NOT null,
-total float(7,2) NOT null,
 PRIMARY KEY(cve_factura)
 )
 
@@ -17,16 +14,17 @@ cantidad  int(5) NOT NULL,
 descripcion  varchar(50) NOT NULL,
 importe float(7,2) NOT null,
 cve_factura int NOT NULL,
-PRIMARY KEY(cve_concepto),
-FOREIGN KEY(cve_factura) REFERENCES factura(cve_factura)
-		ON DELETE CASCADE
-		ON UPDATE CASCADE
+PRIMARY KEY(cve_concepto)
 )
 
-CREATE TRIGGER trigger1
-AFTER INSERT
-ON factura
-FOR EACH ROW
-BEGIN
-  INSERT INTO concepto VALUES (NULL, 'coca', 15.92 , NEW.id);
-END
+
+-- Ver como se crea la tabla
+show create table concepto;
+-- Eliminando una llave foranea de una tabla donde "concepto_ibfk_1" se obtiene de table concepto
+ALTER TABLE concepto DROP FOREIGN KEY concepto_ibfk_1 
+-- Cambiando una columna de la tabla 
+ALTER TABLE concepto CHANGE COLUMN cve_factura cve_factura integer not null default 0;
+-- Agregando llave foranea con restrinccion
+alter table concepto add constraint fk_cve_factura foreign key (cve_factura) references factura(cve_factura)
+
+
