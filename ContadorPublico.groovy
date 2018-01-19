@@ -8,6 +8,31 @@ class ContadorPublico{
 	def db = [user:"root", pass:'makingdevs',url:'jdbc:mysql://localhost/facturas', driver:'com.mysql.jdbc.Driver']
 	def sql = Sql.newInstance(db.url, db.user, db.pass, db.driver)	
 
+	void verificaSiLasTablasExisten(){
+    	sql.execute """CREATE TABLE IF NOT EXISTS factura(                         
+					cve_factura int(11) NOT NULL AUTO_INCREMENT, 
+					fecha date NOT NULL,                         
+					emisor varchar(45) NOT NULL,                 
+					rfc_emisor varchar(45) NOT NULL,             
+					receptor varchar(45) NOT NULL,               
+					rfc_receptor varchar(45) NOT NULL,           
+					PRIMARY KEY (cve_factura)                    
+					)"""
+		
+		sql.execute """CREATE TABLE IF NOT EXISTS concepto (                                                                      
+					cve_concepto int(5) NOT NULL AUTO_INCREMENT,                                               
+					cantidad int(5) NOT NULL,                                                                  
+					descripcion varchar(50) NOT NULL,                                                          
+					importe decimal(10,2) NOT NULL,                                                               
+					cve_factura int(11) NOT NULL DEFAULT '0',                                                  
+					PRIMARY KEY (cve_concepto),                                                                
+					KEY fk_cve_factura (cve_factura),                                                        
+					CONSTRAINT fk_cve_factura FOREIGN KEY (cve_factura) REFERENCES factura (cve_factura) 
+					)"""
+	}
+
+
+
 	String registraLaFactura(Factura factura){
 		String insertandoFactura = "insert into factura (fecha, emisor, rfc_emisor, receptor, rfc_receptor) values ('${factura.fecha.format('yyyy-MM-dd')}', '${factura.emisor.razonSocial}', '${factura.emisor.rfc}', '${factura.receptor.razonSocial}', '${factura.receptor.rfc}')"
   		sql.execute(insertandoFactura)
