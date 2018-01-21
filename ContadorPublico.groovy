@@ -8,26 +8,57 @@ class ContadorPublico{
 	def db = [user:"root", pass:'makingdevs',url:'jdbc:mysql://localhost/facturas', driver:'com.mysql.jdbc.Driver']
 	def sql = Sql.newInstance(db.url, db.user, db.pass, db.driver)	
 
+	void verificaSiLasTablasExisten(){
+    	sql.execute """CREATE TABLE IF NOT EXISTS factura(                         
+					cve_factura int(11) NOT NULL AUTO_INCREMENT, 
+					fecha date NOT NULL,                         
+					emisor varchar(45) NOT NULL,                 
+					rfc_emisor varchar(45) NOT NULL,             
+					receptor varchar(45) NOT NULL,               
+					rfc_receptor varchar(45) NOT NULL,           
+					PRIMARY KEY (cve_factura)                    
+					)"""
+		
+		sql.execute """CREATE TABLE IF NOT EXISTS concepto (                                                                      
+					cve_concepto int(5) NOT NULL AUTO_INCREMENT,                                               
+					cantidad int(5) NOT NULL,                                                                  
+					descripcion varchar(50) NOT NULL,                                                          
+					importe decimal(10,2) NOT NULL,                                                               
+					cve_factura int(11) NOT NULL DEFAULT '0',                                                  
+					PRIMARY KEY (cve_concepto),                                                                
+					KEY fk_cve_factura (cve_factura),                                                        
+					CONSTRAINT fk_cve_factura FOREIGN KEY (cve_factura) REFERENCES factura (cve_factura) 
+					)"""
+	}
+
+
+
 	String registraLaFactura(Factura factura){
-		String insertandoFactura = "insert into factura (fecha, emisor, rfc_emisor, receptor, rfc_receptor, subtotal, iva, total) values ('${factura.fecha.format('yyyy-dd-MM')}', '${factura.emisor.razonSocial}', '${factura.emisor.rfc}', '${factura.receptor.razonSocial}', '${factura.receptor.rfc}', '${factura.subtotal}', '${factura.iva}', '${factura.total}')"
+		String insertandoFactura = "insert into factura (fecha, emisor, rfc_emisor, receptor, rfc_receptor) values ('${factura.fecha.format('yyyy-MM-dd')}', '${factura.emisor.razonSocial}', '${factura.emisor.rfc}', '${factura.receptor.razonSocial}', '${factura.receptor.rfc}')"
   		sql.execute(insertandoFactura)
-  		/*factura.conceptos.each{ 
-            sql.execute("insert into concepto (cantidad, descripcion, importe) values ('${it.cantidad}','${it.descripcion}', '${it.importe}')");
-   	  		
-        }*/
+  		
+  		def ultimoIdRegistrado = sql.rows("SELECT LAST_INSERT_ID()")
+        String parseoDelUltimoIdRegistrado = ultimoIdRegistrado
+       	String id = parseoDelUltimoIdRegistrado.findAll(/\d+/).first()
+  		
+  		factura.conceptos.each{ 
+            sql.execute("insert into concepto (cantidad, descripcion, importe,cve_factura) values ('${it.cantidad}','${it.descripcion}', '${it.importe}', '${id}')")
+        }
   	}
 
 	Factura quieroLaFactura(def value){
-		String consultaPorId = "select * from factura WHERE cve_factura = ${value}"
-		def parseo = sql.rows(consultaPorId)
+		String consultaFacturaPorId = "select * from factura WHERE cve_factura = ${value}"
+		def parseo = sql.rows(consultaFacturaPorId)
 
 		InvoiceEntity emisor =  new InvoiceEntity(razonSocial:parseo.emisor.first(), rfc:parseo.rfc_emisor.first() )
 		InvoiceEntity receptor =  new InvoiceEntity(razonSocial:parseo.receptor.first(),rfc:parseo.rfc_receptor.first() )
-		
-		Concepto concepto2 = new Concepto(cantidad:1, 
-								  		  descripcion:"Chetos",
-								  		  importe:12.13)  
-		def listaDeConceptos = [concepto2]
+
+		def listaDeConceptos = []
+
+		sql.eachRow("select cantidad,descripcion,importe from concepto where cve_factura = ${value}"){
+	    	def concepto = new Concepto(cantidad:it.cantidad, descripcion:it.descripcion, importe:it.importe)
+	    	listaDeConceptos << concepto
+    	}
 
 		Factura factura = new Factura(fecha:parseo.fecha.first(),
 								  emisor:emisor,

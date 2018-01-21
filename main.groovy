@@ -1,4 +1,4 @@
-//Direcciones
+//Instanciando las Direcciones del emisor y el receptor
 
 Direccion direccionDelEmisor = new Direccion(
 	calle:"Rodolfo Gaona", 
@@ -20,7 +20,7 @@ Direccion direccionDelReceptor = new Direccion(
 	municipio:"Iztapalapa",
 	pais:"México")
 
-//Emisor
+//Instaciando nuevo emisor
 
 InvoiceEntity emisor = new InvoiceEntity(razonSocial:"LA EUROPEA MEXICO, S.A.P.I DE C.V.",
 						   rfc:"EME910610G1A")
@@ -30,7 +30,7 @@ InvoiceEntity emisor2 = new InvoiceEntity(razonSocial:"Juan",
 						   rfc:"JJAZRE124567")
 emisor2.direccion = direccionDelEmisor
 
-//Receptor
+//Instanciando nuevo Receptor
 
 InvoiceEntity receptor = new InvoiceEntity(razonSocial:"MAKING DEVS",
 								 rfc:"EME910610G1A")
@@ -40,7 +40,7 @@ InvoiceEntity receptor2 = new InvoiceEntity(razonSocial:"Pedro",
 								 rfc:"PDOANP125563")
 receptor2.direccion = direccionDelReceptor
 
-//Conceptos 
+//Instanciando conceptos para cada factura  
 
 Concepto concepto1 = new Concepto(cantidad:1, 
 								  descripcion:"Coca-cola 135ml",
@@ -59,6 +59,7 @@ Concepto concepto4 = new Concepto(cantidad:1,
 def listaDeConceptosFactura1 = [concepto1,concepto2]
 
 def listaDeConceptosFactura2 = [concepto3,concepto4]
+
 //Instanciando la factura numero 1 y agregando elementos a sus atributos"
 Factura factura1 = new Factura(emisor:emisor, 
 							   receptor:receptor, 
@@ -70,15 +71,18 @@ Factura factura2 = new Factura(emisor:emisor2,
 
 //listaDeFacturas = [factura1,factura2]
 
+// verificando si existe la base de datos.
+
 //Llamando a yarey 
 
 ContadorPublico yarey = new ContadorPublico()
 
+yarey.verificaSiLasTablasExisten()
 //Yarey registrame esta factura porfavorzzzzzzz
 
-//yarey.registraLaFactura(factura1)
+//yarey.registraLaFactura(factura2)
 
 //Yarey quiero la factura 'X' por favooorzzzzz
 
-//Factura factura3 = yarey.quieroLaFactura(1)
-//println factura3
+Factura facturaX = yarey.quieroLaFactura(1)
+println facturaX
