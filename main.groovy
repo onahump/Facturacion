@@ -1,13 +1,4 @@
 import groovy.text.SimpleTemplateEngine
-
-model = [nombre: "Nahum", organizacion: "Making Devs" ]
-text = newFile("hello.groovy").text
-
-engine = new SimpleTemplateEngine()
-tmpl = engine.createTemplate(text).make(model)
-
-println tmpl.toString()
-
 /*
 
 //Instanciando las Direcciones del emisor y el receptor
@@ -87,9 +78,9 @@ Factura factura2 = new Factura(emisor:emisor2,
 
 //Llamando a yarey 
 
-ContadorPublico yarey = new ContadorPublico()
+//ContadorPublico yarey = new ContadorPublico()
 
-yarey.verificaSiLasTablasExisten()
+//yarey.verificaSiLasTablasExisten()
 //Yarey registrame esta factura porfavorzzzzzzz
 
 //yarey.registraLaFactura(factura2)
@@ -98,6 +89,14 @@ yarey.verificaSiLasTablasExisten()
 
 //Factura facturaX = yarey.quieroLaFactura(1)
 //println facturaX
+*/
 
 
-/*
+model = [nombre: "Nahum", organizacion: "Making Devs" ]
+text = new File("index.groovy").text
+
+engine = new SimpleTemplateEngine()
+tmpl = engine.createTemplate(text).make(model)
+
+println tmpl.toString()
+
