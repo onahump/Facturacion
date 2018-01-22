@@ -1,4 +1,13 @@
 import groovy.text.SimpleTemplateEngine
+
+model = [organizacion: "Making Devs" ]
+text = new File("groovlets/index.groovy").text
+
+engine = new SimpleTemplateEngine()
+tmpl = engine.createTemplate(text).make(model)
+
+println tmpl.toString()
+
 /*
 
 //Instanciando las Direcciones del emisor y el receptor
@@ -92,11 +101,5 @@ Factura factura2 = new Factura(emisor:emisor2,
 */
 
 
-model = [nombre: "Nahum", organizacion: "Making Devs" ]
-text = new File("index.groovy").text
 
-engine = new SimpleTemplateEngine()
-tmpl = engine.createTemplate(text).make(model)
-
-println tmpl.toString()
 
