@@ -1,3 +1,15 @@
+import groovy.text.SimpleTemplateEngine
+
+model = [nombre: "Nahum", organizacion: "Making Devs" ]
+text = newFile("hello.groovy").text
+
+engine = new SimpleTemplateEngine()
+tmpl = engine.createTemplate(text).make(model)
+
+println tmpl.toString()
+
+/*
+
 //Instanciando las Direcciones del emisor y el receptor
 
 Direccion direccionDelEmisor = new Direccion(
@@ -84,5 +96,8 @@ yarey.verificaSiLasTablasExisten()
 
 //Yarey quiero la factura 'X' por favooorzzzzz
 
-Factura facturaX = yarey.quieroLaFactura(1)
-println facturaX
+//Factura facturaX = yarey.quieroLaFactura(1)
+//println facturaX
+
+
+/*
