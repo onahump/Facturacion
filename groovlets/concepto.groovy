@@ -26,20 +26,6 @@ if (!session.receptor) {
 	session.receptor
 }
 
-println """Receptor: ${session.receptor}
-		<br><br>
-		Emisor: ${session.emisor}
-		<br><br>"""
-
-println params
-println "<br><br>"
-println context.properties
-println "<br><br>"
-println session?.properties
-println "<br><br>"
-println "Contador de sesiones: ${session.counter}"
-
-
 Template vistaConcepto = new Template()
 
 println vistaConcepto.generaUnaVista("concepto",[:])
