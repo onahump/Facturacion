@@ -25,6 +25,17 @@ if (!session.receptor) {
 }else{
 	session.receptor
 }
+//Creando un concepto y agregandolo a la lista
+
+if (!session.listaDeConceptos && !session.concepto) {
+	session.listaDeConceptos = []
+	session.concepto = new Concepto()
+}else{
+	session.concepto = new Concepto(cantidad:params?.cantidad.toInteger(),
+									descripcion:params?.descripcion,
+									importe:params?.importe.toInteger())
+	session.listaDeConceptos << session.concepto
+} 
 
 Template vistaConcepto = new Template()
 
