@@ -3,6 +3,28 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Concepto</title>
+		<script>
+			function validandoFormulario(){
+			    var number_cantidad = document.getElementById("cantidad").value;
+			    var txtDescripcion = document.getElementById("descripcion").value;
+			    var decimal_importe = document.getElementById("importe").value;
+
+			    if (number_cantidad == null || number_cantidad.length == 0) {
+			        alert("Ingresa una cantidad");
+			        return false;
+			    }
+
+			   	if (txtDescripcion == null || txtDescripcion.length == 0) {
+			        alert("Ingresa una descripcion para el concepto");
+			        return false;
+			    }
+
+			    if (decimal_importe == null || decimal_importe.length == 0 ){
+			    	alert("El campo RFC del Receptor se encuentra vacio o ingreso un RFC incorrecto");
+			    	return false;
+			    }
+			}
+		</script>
 	</head>
 	<body>
 		<div>
@@ -10,13 +32,13 @@
 		</div>
 		<div>
 			<p>Agrega un concepto:</p>
-			<form action="concepto.groovy" method="POST">
+			<form name="formularioConcepto" onsubmit="return validandoFormulario()" action="concepto.groovy" method="POST">
 			  Cantidad:<br>
-			  <input name="cantidad" type="text" ><br>
+			  <input id="cantidad" name="cantidad" type="number" ><br>
 			  Descripcion:<br>
-			  <input name="descripcion" type="text" ><br>
+			  <input id="descripcion" name="descripcion" type="text" ><br>
 			  Importe:<br>
-			  <input name="importe" type="text" ><br>
+			  <input id="importe" name="importe" type="number" step="0.01"><br>
 			  <br>
 			  <input type="submit" value="Agregar">
 			</form><br><br>
