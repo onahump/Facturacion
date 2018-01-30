@@ -4,35 +4,35 @@
 		<meta charset="UTF-8">
 		<title>Alta de Facturación</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+			function validandoFormulario(){
+			    var txtNombreEmisor = document.getElementById("nombre_emisor").value;
+			    var txtRFCEmisor = document.getElementById("rfc_emisor").value;
+			    var txtNombreReceptor = document.getElementById("nombre_receptor").value;
+			    var txtRFCReceptor = document.getElementById("rfc_receptor").value;
+
+			    if (txtNombreEmisor == null || txtNombreEmisor.length == 0) {
+			        alert("El campo Nombre del emisor se encuentra vacio");
+			        return false;
+			    }
+
+			    if (txtRFCEmisor == null || txtRFCEmisor.length == 0 || txtRFCEmisor.length < 10 || txtRFCEmisor.length > 13){
+			    	alert("El campo RFC del emisor se encuentra vacio o ingreso un RFC incorrecto");
+			    	return false;
+			    }
+
+			   	if (txtNombreReceptor == null || txtNombreReceptor.length == 0) {
+			        alert("El campo Nombre del Receptor se encuentra vacio");
+			        return false;
+			    }
+
+			    if (txtRFCReceptor == null || txtRFCReceptor.length == 0 || txtRFCReceptor.length < 10 || txtRFCReceptor.length > 13){
+			    	alert("El campo RFC del Receptor se encuentra vacio o ingreso un RFC incorrecto");
+			    	return false;
+			    }
+			}
+		</script>
 	</head>
-	<script>
-		function validandoFormulario(){
-		    var txtNombreEmisor = document.getElementById("nombre_emisor").value;
-		    var txtRFCEmisor = document.getElementById("rfc_emisor").value;
-		    var txtNombreReceptor = document.getElementById("nombre_receptor").value;
-		    var txtRFCReceptor = document.getElementById("rfc_receptor").value;
-
-		    if (txtNombreEmisor == null || txtNombreEmisor.length == 0) {
-		        alert("El campo Nombre del emisor se encuentra vacio");
-		        return false;
-		    }
-
-		    if (txtRFCEmisor == null || txtRFCEmisor.length == 0 || txtRFCEmisor.length < 10 || txtRFCEmisor.length > 13){
-		    	alert("El campo RFC del emisor se encuentra vacio o ingreso un RFC incorrecto");
-		    	return false;
-		    }
-
-		   	if (txtNombreReceptor == null || txtNombreReceptor.length == 0) {
-		        alert("El campo Nombre del Receptor se encuentra vacio");
-		        return false;
-		    }
-
-		    if (txtRFCReceptor == null || txtRFCReceptor.length == 0 txtRFCReceptor.length < 10 || txtRFCReceptor.length > 13){
-		    	alert("El campo RFC del Receptor se encuentra vacio o ingreso un RFC incorrecto");
-		    	return false;
-		    }
-		}
-	</script>
 	<body>
 		<div>
 		  <h1 align="center">Alta de facturas</h1>
