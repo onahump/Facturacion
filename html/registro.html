@@ -11,9 +11,24 @@
 		    var txtNombreReceptor = document.getElementById("nombre_receptor").value;
 		    var txtRFCReceptor = document.getElementById("rfc_receptor").value;
 
-		    if (txtNombreEmisor == "" || txtRFCReceptor == "" || txtNombreReceptor == "" || txtRFCReceptor == "") {
-		        alert("Campo Vacio");
+		    if (txtNombreEmisor == null || txtNombreEmisor.length == 0) {
+		        alert("El campo Nombre del emisor se encuentra vacio");
 		        return false;
+		    }
+
+		    if (txtRFCEmisor == null || txtRFCEmisor.length == 0 || txtRFCEmisor.length < 10 || txtRFCEmisor.length > 13){
+		    	alert("El campo RFC del emisor se encuentra vacio o ingreso un RFC incorrecto");
+		    	return false;
+		    }
+
+		   	if (txtNombreReceptor == null || txtNombreReceptor.length == 0) {
+		        alert("El campo Nombre del Receptor se encuentra vacio");
+		        return false;
+		    }
+
+		    if (txtRFCReceptor == null || txtRFCReceptor.length == 0 txtRFCReceptor.length < 10 || txtRFCReceptor.length > 13){
+		    	alert("El campo RFC del Receptor se encuentra vacio o ingreso un RFC incorrecto");
+		    	return false;
 		    }
 		}
 	</script>
@@ -27,11 +42,11 @@
 			  Nombre del Emisor:<br>
 			  <input id="nombre_emisor" type="text"><br>
 			  RFC del Emisor:<br>
-			  <input id="rfc_emisor" type="text" minlength="10" maxlength="13" ><br>
+			  <input id="rfc_emisor" type="text" ><br>
 			  Nombre del Receptor:<br>
 			  <input id="nombre_receptor" type="text"><br>
 			  RFC del Receptor:<br>
-			  <input id="rfc_receptor" type="text" minlength="10" maxlength="13"><br>
+			  <input id="rfc_receptor" type="text"><br>
 			  <br>
 			  <input type="submit" value="Siguiente">
 			</form>
