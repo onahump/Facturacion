@@ -4,21 +4,34 @@
 		<meta charset="UTF-8">
 		<title>Alta de Facturación</title>
 	</head>
+	<script>
+		function validandoFormulario(){
+		    var txtNombreEmisor = document.getElementById("nombre_emisor").value;
+		    var txtRFCEmisor = document.getElementById("rfc_emisor").value;
+		    var txtNombreReceptor = document.getElementById("nombre_receptor").value;
+		    var txtRFCReceptor = document.getElementById("rfc_receptor").value;
+
+		    if (txtNombreEmisor == "" || txtRFCReceptor == "" || txtNombreReceptor == "" || txtRFCReceptor == "") {
+		        alert("Campo Vacio");
+		        return false;
+		    }
+		}
+	</script>
 	<body>
 		<div>
 		  <h1 align="center">Alta de facturas</h1>
 		</div>
 		<div>
 			<p>Contesta el siguiente formulario:</p>
-			<form action="concepto.groovy" method="POST">
+			<form name="formularioRegistro" action="concepto.groovy" onsubmit="return validandoFormulario()" method="POST" autocomplete="on">
 			  Nombre del Emisor:<br>
-			  <input name="nombre_emisor" type="text" ><br>
+			  <input id="nombre_emisor" type="text"><br>
 			  RFC del Emisor:<br>
-			  <input name="rfc_emisor" type="text"><br>
+			  <input id="rfc_emisor" type="text" minlength="10" maxlength="13" ><br>
 			  Nombre del Receptor:<br>
-			  <input name="nombre_receptor" type="text"><br>
+			  <input id="nombre_receptor" type="text"><br>
 			  RFC del Receptor:<br>
-			  <input name="rfc_receptor"type="text"><br>
+			  <input id="rfc_receptor" type="text" minlength="10" maxlength="13"><br>
 			  <br>
 			  <input type="submit" value="Siguiente">
 			</form>
