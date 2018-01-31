@@ -54,8 +54,8 @@ class ContadorPublico{
 		if(value > cantidad){
 			"Esta factura no se encuentra debido a que solo existen ${cantidad} registros, ingresa un numero válido"
 		}else{
-			String consultaFacturaPorId = "select * from factura WHERE cve_factura = ${value}"
-			def parseo = sql.rows(consultaFacturaPorId)
+			String consultaFacturaPorClave = "select * from factura WHERE cve_factura = ${value}"
+			def parseo = sql.rows(consultaFacturaPorClave)
 
 			InvoiceEntity emisor =  new InvoiceEntity(razonSocial:parseo.emisor.first(), rfc:parseo.rfc_emisor.first() )
 			InvoiceEntity receptor =  new InvoiceEntity(razonSocial:parseo.receptor.first(),rfc:parseo.rfc_receptor.first() )
@@ -74,5 +74,24 @@ class ContadorPublico{
 			factura
 		}
 	}
-	
+
+	def quieroLaFacturaPorFecha(String fecha){
+		String consultaFacturaPorFecha = "select * from factura where fecha like '%${fecha}%'"
+		def parseo = sql.rows(consultaFacturaPorFecha) 
+		
+		InvoiceEntity emisor =  new InvoiceEntity(razonSocial:parseo.emisor.first(), rfc:parseo.rfc_emisor.first() )
+		InvoiceEntity receptor =  new InvoiceEntity(razonSocial:parseo.receptor.first(),rfc:parseo.rfc_receptor.first() )
+
+		def listaDeConceptos = []
+		sql.eachRow("select cantidad,descripcion,importe from concepto where cve_factura = ${parseo.cve_factura.first()}"){
+	    	def concepto = new Concepto(cantidad:it.cantidad, descripcion:it.descripcion, importe:it.importe)
+	    	listaDeConceptos << concepto
+    	}
+
+		Factura factura = new Factura(fecha:parseo.fecha.first(),
+								  emisor:emisor,
+								  receptor:receptor,
+								  conceptos:listaDeConceptos)
+		factura
+	}	
 }	
