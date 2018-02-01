@@ -1,24 +1,42 @@
 if (!session) {
-  session = request.getSession(true)
+	session = request.getSession(true)
 }
 
 if (!session.counter) {
-  session.counter = 1
+	session.counter = 1
 } else {
 	session.counter += 1
 }
 
-Templates pagina = new Templates()
+//Creando un emisor
 
-def listaDeConceptos = []
+if (!session.emisor) {
+	session.emisor = new InvoiceEntity(razonSocial:params?.nombre_emisor,
+										rfc:params.rfc_emisor)
+}else{
+	session.emisor
+}
 
-	Concepto concepto = new Concepto(cantidad:params.cantidad.toInteger(),
-									  descripcion:params.descripcion,
-									  importe:params.importe.toBigDecimal())
+//Creando un receptor
 
-	listaDeConceptos << concepto
+if (!session.receptor) {
+	session.receptor = new InvoiceEntity(razonSocial:params?.nombre_receptor,
+										rfc:params.rfc_receptor)
+}else{
+	session.receptor
+}
+//Creando un concepto y agregandolo a la lista
 
-System.out.println(listaDeConceptos)
+if (!session.listaDeConceptos && !session.concepto) {
+	session.listaDeConceptos = []
+	session.concepto = new Concepto()
+}else{
+	session.concepto = new Concepto(cantidad:params?.cantidad.toInteger(),
+									descripcion:params?.descripcion,
+									importe:params?.importe.toInteger())
+	session.listaDeConceptos << session.concepto
+}
 
-println pagina.generaUnTemplateParaRenderear("concepto")
+Template vistaConcepto = new Template()
 
+println vistaConcepto.generaUnaVista("concepto",[:])

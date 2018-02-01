@@ -8,6 +8,6 @@ if (!session.counter) {
 	session.counter += 1
 }
 
-Template index = new Template()
+Template registro = new Template()
 
-println index.generaUnaVista("index",[organizacion:"Making Devs"])
+println registro.generaUnaVista("registro")
