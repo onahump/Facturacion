@@ -2,40 +2,42 @@ if (!session) {
 	session = request.getSession(true)
 }
 
-if (!session.counter) {
-	session.counter = 1
-} else {
-	session.counter += 1
+//Creando un concepto y agregandolo a la lista
+
+if (!session.listaDeConceptos) {
+	session.listaDeConceptos = []
+}else{
+	session.listaDeConceptos
 }
 
-//Creando un emisor 
+//Creando un emisor
 
-if (!session.emisor) {
+if (!session.emisor || session.emisor == null) {
 	session.emisor = new InvoiceEntity(razonSocial:params?.nombre_emisor,
 										rfc:params.rfc_emisor)
 }else{
 	session.emisor
 }
-
 //Creando un receptor
 
-if (!session.receptor) {
+if (!session.receptor || (session.receptor.razonSocial == null && session.receptor.rfc == null)) {
 	session.receptor = new InvoiceEntity(razonSocial:params?.nombre_receptor,
 										rfc:params.rfc_receptor)
 }else{
 	session.receptor
 }
-//Creando un concepto y agregandolo a la lista
 
-if (!session.listaDeConceptos && !session.concepto) {
-	session.listaDeConceptos = []
+if(!session.concepto){
 	session.concepto = new Concepto()
-}else{
-	session.concepto = new Concepto(cantidad:params?.cantidad.toInteger(),
+}else{	
+	session.concepto = new Concepto(cantidad:params?.cantidad?.toInteger(),
 									descripcion:params?.descripcion,
-									importe:params?.importe.toInteger())
+									importe:params?.importe?.toBigDecimal())
+	if(session.concepto.cantidad != null && session.concepto.descripcion != null && session.concepto.descripcion != null){
 	session.listaDeConceptos << session.concepto
-} 
+	}
+}
+
 
 Template vistaConcepto = new Template()
 

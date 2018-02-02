@@ -24,19 +24,27 @@ class Factura{
 
 	String toString(){
 		"""\n
-		${'*'*26} ${fechaConFormato} ${'*'*26}
+		${'*'*26} ${fechaConFormato} ${'*'*26}<br>
 
-		Nombre del Emisor: ${emisor}
-		Nombre del Receptor: ${receptor}
-		Concepto(s)
-		${conceptos[0]}
-		${conceptos[1]}
-		${conceptos[2]?:""} 
+		Nombre del Emisor: ${emisor}<br>
+		Nombre del Receptor: ${receptor}<br>
+		Concepto(s)<br>
+		${conceptos[0]?:""}<br>
+		${conceptos[1]?:""}<br>
+		${conceptos[2]?:""}<br>
+		${conceptos[3]?:""}<br>
+		${conceptos[4]?:""}<br>
+		${conceptos[5]?:""}<br>
+		${conceptos[6]?:""}<br>
+		${conceptos[7]?:""}<br>
+		${conceptos[8]?:""}<br>
+		${conceptos[9]?:""}<br>
+		${conceptos[10]?:""} <br>
 
 
-						  	Subtotal: \$ ${subtotal}
-					               	Iva: \$ ${iva}
-						     	Total: \$ ${total}
+						  	Subtotal: \$ ${subtotal}<br>
+					               	Iva: \$ ${iva}<br>
+						     	Total: \$ ${total}<br>
 
 		${'*'*65}
 		"""
