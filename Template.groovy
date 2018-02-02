@@ -1,13 +1,13 @@
 import groovy.text.SimpleTemplateEngine
 
-class Templates{
+class Template{
 
 	def engine = new SimpleTemplateEngine()
 
-	String generaUnTemplateParaRenderear(String nombreDelTemplate, Map model = [:]){
+	String generaUnaVista(String nombreDelTemplate, Map model = [:]){
 		def text = new File("html/${nombreDelTemplate}.html").text
 		def tmpl = engine.createTemplate(text).make(model)
-		
-		tmpl.toString()	
+
+		tmpl.toString()
 	}
 }
