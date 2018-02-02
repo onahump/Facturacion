@@ -74,5 +74,21 @@ class ContadorPublico{
 			factura
 		}
 	}
-	
+
+	def quieroTodasLasFacturas(){
+		List listaDeCveDeFactura = []
+		def listaDeEmisores = []
+		def listaRfcEmisores = []
+		def listaDeReceptores = []
+		def listaRfcReceptores = []
+		
+		sql.eachRow("select * from factura"){ row -> 
+     		listaDeCveDeFactura << row.cve_factura  
+     		listaDeEmisores << row.emisor  
+     		listaRfcEmisores << row.rfc_emisor  
+     		listaDeReceptores << row.receptor  
+     		listaRfcReceptores << row.rfc_receptor
+		}
+		Map superMapa = [claves:listaDeCveDeFactura, emisores:listaDeEmisores, rfcEmisores:listaRfcEmisores, receptores:listaDeReceptores, rfcReceptores:listaRfcReceptores]
+	}	
 }	
