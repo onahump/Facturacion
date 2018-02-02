@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+	<head>
+		<meta charset="UTF-8">
+		<title>Concepto</title>
+		<script>
+			function validandoFormulario(){
+			    var number_cantidad = document.getElementById("cantidad").value;
+			    var txtDescripcion = document.getElementById("descripcion").value;
+			    var decimal_importe = document.getElementById("importe").value;
+
+			    if (number_cantidad == null || number_cantidad.length == 0) {
+			        alert("Ingresa una cantidad");
+			        return false;
+			    }
+
+			   	if (txtDescripcion == null || txtDescripcion.length == 0) {
+			        alert("Ingresa una descripcion para el concepto");
+			        return false;
+			    }
+
+			    if (decimal_importe == null || decimal_importe.length == 0 ){
+			    	alert("El campo de importe es incorrecto");
+			    	return false;
+			    }
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+		  <h1 align="center">Agregando un concepto</h1>
+		</div>
+		<div>
+			<p>Agrega un concepto:</p>
+			<form name="formularioConcepto" onsubmit="return validandoFormulario()" action="concepto.groovy" method="POST">
+			  Cantidad:<br>
+			  <input id="cantidad" name="cantidad" type="number" ><br>
+			  Descripcion:<br>
+			  <input id="descripcion" name="descripcion" type="text" ><br>
+			  Importe:<br>
+			  <input id="importe" name="importe" type="number" step="0.01"><br>
+			  <br>
+			  <input type="submit" value="Agregar">
+			</form><br><br>
+
+		<a href="factura.groovy"><button>Crear Factura</button></a>
+		</div>
+	</body>
+</html>

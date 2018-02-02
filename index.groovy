@@ -1,15 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<h1>
-		  Hola estimado ${nombre} !!!
-		</h1>
-		<h2>
-		  Fue bueno verte en el curso  de <%= if(organizacion) organizacion else "MakingDevs" %>
-		</h2>
-	</body>
-</html>
+//println "<br><br>"
+//println request.properties
+//println "<br><br>"
+//println headers
+//println "<br><br>"
+//println params
+//println "<br><br>"
+//println context.properties
+//println "<br><br>"
+//println session?.properties
+//println "<br><br>"
+//response.status = 201
+//response.addHeader("tokenazo", "21798126")
+//println response.properties
+
+persona = new Persona(nombre:"Juan", apellidos:"Zuñiga")
+t = new Templates()
+r = t.generaUnTemplateParaRenderear("hello", [persona:persona])
+println r
+
