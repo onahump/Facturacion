@@ -41,13 +41,13 @@
 			    <th>Receptor</th>
 			    <th>RFC Receptor</th>
 			  </tr>
-			<% emisores.size().times{  %>
+			<% for(i=0 ; i <= emisores.size()-1;i++){  %>
   			<tr>
-			    <td>1</td>
-			    <td>Nahum Ponce</td>
-			    <td>POAO931115</td>
-			    <td>Gonzalo Flores</td>
-			    <td>GOAD931022</td>
+			    <td>${claves[i]}</td>
+			    <td>${emisores[i]}</td>
+			    <td>${rfcEmisores[i]}</td>
+			    <td>${receptores[i]}</td>
+			    <td>${rfcReceptores[i]}</td>
 			  </tr>
   			<% }  %>
 
