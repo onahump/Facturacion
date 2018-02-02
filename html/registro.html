@@ -17,7 +17,7 @@
 			    }
 
 			    if (txtRFCEmisor == null || txtRFCEmisor.length == 0 || txtRFCEmisor.length < 10 || txtRFCEmisor.length > 13){
-			    	alert("El campo RFC del emisor se encuentra vacio o ingreso un RFC incorrecto");
+			    	alert("El campo RFC del emisor se encuentra vacio o contiene menos de 10 caracteres");
 			    	return false;
 			    }
 
@@ -27,7 +27,7 @@
 			    }
 
 			    if (txtRFCReceptor == null || txtRFCReceptor.length == 0 || txtRFCReceptor.length < 10 || txtRFCReceptor.length > 13){
-			    	alert("El campo RFC del Receptor se encuentra vacio o ingreso un RFC incorrecto");
+			    	alert("El campo RFC del Receptor se encuentra vacio o contiene menos de 10 caracteres");
 			    	return false;
 			    }
 			}
@@ -41,13 +41,13 @@
 			<p>Contesta el siguiente formulario:</p>
 			<form name="formularioRegistro" action="concepto.groovy" onsubmit="return validandoFormulario()" method="POST" autocomplete="on">
 			  Nombre del Emisor:<br>
-			  <input id="nombre_emisor" type="text"><br>
+			  <input id="nombre_emisor" name="nombre_emisor" type="text"><br>
 			  RFC del Emisor:<br>
-			  <input id="rfc_emisor" type="text" ><br>
+			  <input id="rfc_emisor" name="rfc_emisor" type="text" maxlength="13"><br>
 			  Nombre del Receptor:<br>
-			  <input id="nombre_receptor" type="text"><br>
+			  <input id="nombre_receptor" name="nombre_receptor" type="text"><br>
 			  RFC del Receptor:<br>
-			  <input id="rfc_receptor" type="text"><br>
+			  <input id="rfc_receptor" name="rfc_receptor" type="text" maxlength="13"><br>
 			  <br>
 			  <input type="submit" value="Siguiente">
 			</form>
