@@ -2,10 +2,12 @@ if (!session) {
 	session = request.getSession(true)
 }
 
-if (!session.counter) {
-	session.counter = 1
-} else {
-	session.counter += 1
+//Creando un concepto y agregandolo a la lista
+
+if (!session.listaDeConceptos) {
+	session.listaDeConceptos = []
+}else{
+	session.listaDeConceptos
 }
 
 //Creando un emisor
@@ -16,7 +18,6 @@ if (!session.emisor) {
 }else{
 	session.emisor
 }
-
 //Creando un receptor
 
 if (!session.receptor) {
@@ -25,17 +26,24 @@ if (!session.receptor) {
 }else{
 	session.receptor
 }
-//Creando un concepto y agregandolo a la lista
 
-if (!session.listaDeConceptos && !session.concepto) {
-	session.listaDeConceptos = []
+if(!session.concepto){
 	session.concepto = new Concepto()
-}else{
-	session.concepto = new Concepto(cantidad:params?.cantidad.toInteger(),
+}else{	
+	session.concepto = new Concepto(cantidad:params?.cantidad?.toInteger(),
 									descripcion:params?.descripcion,
-									importe:params?.importe.toInteger())
+									importe:params?.importe?.toBigDecimal())
+	if(session.concepto.cantidad != null && session.concepto.descripcion != null && session.concepto.descripcion != null){
 	session.listaDeConceptos << session.concepto
+	}
 }
+
+if(session.factura){
+	session.factura = new Factura()
+}else{
+	session.factura
+}
+
 
 Template vistaConcepto = new Template()
 
