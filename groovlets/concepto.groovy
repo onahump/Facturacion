@@ -12,7 +12,7 @@ if (!session.listaDeConceptos) {
 
 //Creando un emisor
 
-if (!session.emisor) {
+if (!session.emisor || session.emisor == null) {
 	session.emisor = new InvoiceEntity(razonSocial:params?.nombre_emisor,
 										rfc:params.rfc_emisor)
 }else{
@@ -20,7 +20,7 @@ if (!session.emisor) {
 }
 //Creando un receptor
 
-if (!session.receptor) {
+if (!session.receptor || (session.receptor.razonSocial == null && session.receptor.rfc == null)) {
 	session.receptor = new InvoiceEntity(razonSocial:params?.nombre_receptor,
 										rfc:params.rfc_receptor)
 }else{
@@ -36,12 +36,6 @@ if(!session.concepto){
 	if(session.concepto.cantidad != null && session.concepto.descripcion != null && session.concepto.descripcion != null){
 	session.listaDeConceptos << session.concepto
 	}
-}
-
-if(session.factura){
-	session.factura = new Factura()
-}else{
-	session.factura
 }
 
 
