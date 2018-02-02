@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+	<head>
+		<meta charset="UTF-8">
+		<title>Facturación Making Devs</title>
+		<style>
+		table {
+		    font-family: arial, sans-serif;
+		    border-collapse: collapse;
+		    width: 100%;
+		}
+
+		td, th {
+		    border: 1px solid #dddddd;
+		    text-align: left;
+		    padding: 8px;
+		}
+
+		tr:nth-child(even) {
+		    background-color: #dddddd;
+		}
+		</style>
+	</head>
+	<body>
+
+		<div>
+			<h1 align="center">
+			   Sistema de Facturacion de Making Devs
+			</h1>
+		</div>
+
+		<div>
+			<h3>Todas las facturas</h3><br>
+		</div>
+		<div>
+			<table>
+			  <tr>
+			    <th>Clave de Emisor</th>
+			    <th>Emisor</th>
+			    <th>RFC Emisor</th>
+			    <th>Receptor</th>
+			    <th>RFC Receptor</th>
+			  </tr>
+			<% emisores.size().times{  %>
+  			<tr>
+			    <td>1</td>
+			    <td>Nahum Ponce</td>
+			    <td>POAO931115</td>
+			    <td>Gonzalo Flores</td>
+			    <td>GOAD931022</td>
+			  </tr>
+  			<% }  %>
+
+
+			</table><br>
+			<a href="index.groovy"><button>Finalizar</button></a>
+		</div>
+	</body>
+</html>
