@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+	<head>
+		<meta charset="UTF-8">
+		<title>Facturación Making Devs</title>
+	</head>
+	<body>
+
+		<div>
+			<h1 align="center">
+			   Busqueda de Factura por nombre del Emisor
+			</h1>
+		</div>
+
+		<div>
+			<h3>Tu factura registrada es la siguiente</h3><br>
+			<% facturas.each{  %>
+  			<p>${it}</p><br>
+  			<% } %>
+			 <a href="index.groovy"><button>Finalizar</button></a><br>
+			 <a href="busquedaPorNombreDelEmisorReceptor.groovy"><button>Regresar</button></a>
+		</div>
+	</body>
+</html>
