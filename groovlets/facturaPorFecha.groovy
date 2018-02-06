@@ -1,7 +1,7 @@
 ContadorPublico yarey = new ContadorPublico()
 
-def facturaX = yarey.quieroLaFacturaPorFecha(params.buscar_factura)
+def listaDeFacturas = yarey.quieroLaFacturaPorFecha(params.buscar_factura)
 Template index = new Template()
 
-println index.generaUnaVista("facturaPorRegistro",[factura:facturaX])
+println index.generaUnaVista("facturaPorFecha",[facturas:listaDeFacturas])
 
