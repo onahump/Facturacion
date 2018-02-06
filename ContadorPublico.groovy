@@ -115,4 +115,29 @@ class ContadorPublico{
 		}
 		listaDeFacturas
 	}
+
+	   def quieroLaFacturaPorNombreDelEmisorReceptor(String nombreDelEmisor){
+		String consultaFacturaPorFecha = "SELECT * FROM factura WHERE emisor LIKE '%${nombreDelEmisor}%' OR receptor LIKE '%${nombreDelEmisor}%'"
+
+		
+		def listaDeFacturas = []
+		sql.eachRow(consultaFacturaPorFecha){ parseo ->	
+			InvoiceEntity emisor =  new InvoiceEntity(razonSocial:parseo.emisor, rfc:parseo.rfc_emisor )
+			InvoiceEntity receptor =  new InvoiceEntity(razonSocial:parseo.receptor,rfc:parseo.rfc_receptor )
+
+			def listaDeConceptos = []
+			sql.eachRow("select cantidad,descripcion,importe from concepto where cve_factura = ${parseo.cve_factura}"){
+		    	def concepto = new Concepto(cantidad:it.cantidad, descripcion:it.descripcion, importe:it.importe)
+		    	listaDeConceptos << concepto
+	    	}
+
+			Factura factura = new Factura(fecha:parseo.fecha,
+									  emisor:emisor,
+									  receptor:receptor,
+									  conceptos:listaDeConceptos)
+
+			listaDeFacturas << factura
+		}
+		listaDeFacturas
+	}
 }
