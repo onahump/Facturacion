@@ -94,21 +94,25 @@ class ContadorPublico{
 
    def quieroLaFacturaPorFecha(String fecha){
 		String consultaFacturaPorFecha = "select * from factura where fecha like '%${fecha}%'"
-		def parseo = sql.rows(consultaFacturaPorFecha)
+		
+		def listaDeFacturas = []
+		sql.eachRow(consultaFacturaPorFecha){ parseo ->	
+			InvoiceEntity emisor =  new InvoiceEntity(razonSocial:parseo.emisor, rfc:parseo.rfc_emisor )
+			InvoiceEntity receptor =  new InvoiceEntity(razonSocial:parseo.receptor,rfc:parseo.rfc_receptor )
 
-		InvoiceEntity emisor =  new InvoiceEntity(razonSocial:parseo.emisor.first(), rfc:parseo.rfc_emisor.first() )
-		InvoiceEntity receptor =  new InvoiceEntity(razonSocial:parseo.receptor.first(),rfc:parseo.rfc_receptor.first() )
+			def listaDeConceptos = []
+			sql.eachRow("select cantidad,descripcion,importe from concepto where cve_factura = ${parseo.cve_factura}"){
+		    	def concepto = new Concepto(cantidad:it.cantidad, descripcion:it.descripcion, importe:it.importe)
+		    	listaDeConceptos << concepto
+	    	}
 
-		def listaDeConceptos = []
-		sql.eachRow("select cantidad,descripcion,importe from concepto where cve_factura = ${parseo.cve_factura.first()}"){
-	    	def concepto = new Concepto(cantidad:it.cantidad, descripcion:it.descripcion, importe:it.importe)
-	    	listaDeConceptos << concepto
-    	}
+			Factura factura = new Factura(fecha:parseo.fecha,
+									  emisor:emisor,
+									  receptor:receptor,
+									  conceptos:listaDeConceptos)
 
-		Factura factura = new Factura(fecha:parseo.fecha.first(),
-								  emisor:emisor,
-								  receptor:receptor,
-								  conceptos:listaDeConceptos)
-		factura
+			listaDeFacturas << factura
+		}
+		listaDeFacturas
 	}
 }
