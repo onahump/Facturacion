@@ -1,59 +1,80 @@
 <!DOCTYPE html>
 <html lang="es-MX">
-	<head>
-		<meta charset="UTF-8">
-		<title>Facturación Making Devs</title>
-		<style>
-		table {
-		    font-family: arial, sans-serif;
-		    border-collapse: collapse;
-		    width: 100%;
-		}
+  <head>
+	<meta charset="UTF-8">
+	<title>Facturación Making Devs</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="http://v4-alpha.getbootstrap.com/examples/cover/cover.css" rel="stylesheet">
+  </head>
 
-		td, th {
-		    border: 1px solid #dddddd;
-		    text-align: left;
-		    padding: 8px;
-		}
+ 	<body>
 
-		tr:nth-child(even) {
-		    background-color: #dddddd;
-		}
-		</style>
-	</head>
-	<body>
+	    <div class="site-wrapper">
 
-		<div>
-			<h1 align="center">
-			   Sistema de Facturacion de Making Devs
-			</h1>
-		</div>
+	      <div class="site-wrapper-inner">
 
-		<div>
-			<h3>Todas las facturas</h3><br>
-		</div>
-		<div>
-			<table>
-			  <tr>
-			    <th>Clave de Emisor</th>
-			    <th>Emisor</th>
-			    <th>RFC Emisor</th>
-			    <th>Receptor</th>
-			    <th>RFC Receptor</th>
-			  </tr>
-			<% for(i=0 ; i <= emisores.size()-1;i++){  %>
-  			<tr>
-			    <td>${claves[i]}</td>
-			    <td>${emisores[i]}</td>
-			    <td>${rfcEmisores[i]}</td>
-			    <td>${receptores[i]}</td>
-			    <td>${rfcReceptores[i]}</td>
-			  </tr>
-  			<% }  %>
+	        <div class="cover-container">
 
 
-			</table><br>
-			<a href="index.groovy"><button>Finalizar</button></a>
-		</div>
+		     <div class="masthead clearfix">
+		        <div class="inner">
+		          <h3 class="masthead-brand">Making Devs</h3>
+		          <nav class="nav nav-masthead">
+		            <a class="nav-link active" href="index.groovy">Inicio</a>
+		            <a class="nav-link" href="registro.groovy">Registro</a>
+		            <a class="nav-link" href="buscarFactura.groovy">Busqueda</a>
+		          </nav>
+		        </div>
+		    </div>
+
+	        <div>
+				<div>
+					<h3>Todas las facturas</h3><br>
+				</div>
+				<div class="table-responsive">
+		            <table class="table table-striped">
+			            <thead>
+						  <tr>
+						    <th>Clave de Emisor</th>
+						    <th>Emisor</th>
+						    <th>RFC Emisor</th>
+						    <th>Receptor</th>
+						    <th>RFC Receptor</th>
+						  </tr>
+						</thead>
+						<tbody>
+							<% for(i=0 ; i <= emisores.size()-1;i++){  %>
+				  			<tr>
+							    <td>${claves[i]}</td>
+							    <td>${emisores[i]}</td>
+							    <td>${rfcEmisores[i]}</td>
+							    <td>${receptores[i]}</td>
+							    <td>${rfcReceptores[i]}</td>
+							  </tr>
+				  			<% }  %>
+			  			</tbody>
+					</table><br>
+					<p class="lead">
+		              <a href="index.groovy" class="btn btn-sm btn-secondary">Finalizar</a>
+		            </p>
+				</div>
+	        </div>
+
+	        <div class="mastfoot">
+	            <div class="inner">
+	              <p>Groovlet example for <a href="https://makingdevs.com">Making Devs</a>, by <a href="http://nahumponce.me/">@onahump</a>.</p>
+	            </div>
+	        </div>
+
+	        </div>
+
+	      </div>
+
+	    </div>
+	</body>
+
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	</body>
 </html>
