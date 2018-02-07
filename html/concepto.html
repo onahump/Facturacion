@@ -2,7 +2,9 @@
 <html lang="es-MX">
 	<head>
 		<meta charset="UTF-8">
-		<title>Concepto</title>
+		<title>Facturación Making Devs</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<link href="http://v4-alpha.getbootstrap.com/examples/cover/cover.css" rel="stylesheet">
 		<script>
 			function validandoFormulario(){
 			    var number_cantidad = document.getElementById("cantidad").value;
@@ -27,11 +29,29 @@
 		</script>
 	</head>
 	<body>
+
+	    <div class="site-wrapper">
+
+	      <div class="site-wrapper-inner">
+
+	        <div class="cover-container">
+
+
+		     <div class="masthead clearfix">
+		        <div class="inner">
+		          <h3 class="masthead-brand">Making Devs</h3>
+		          <nav class="nav nav-masthead">
+		            <a class="nav-link active" href="index.groovy">Inicio</a>
+		            <a class="nav-link" href="registro.groovy">Registro</a>
+		            <a class="nav-link" href="buscarFactura.groovy">Busqueda</a>
+		          </nav>
+		        </div>
+		    </div>
 		<div>
-		  <h1 align="center">Agregando un concepto</h1>
-		</div>
-		<div>
-			<p>Agrega un concepto:</p>
+			<div>
+				<h3>Registro de Factura</h3><br>
+			</div>
+			<p>Ingresa los datos correspondientes a cada concepto:</p>
 			<form name="formularioConcepto" onsubmit="return validandoFormulario()" action="concepto.groovy" method="POST">
 			  Cantidad:<br>
 			  <input id="cantidad" name="cantidad" type="number" ><br>
@@ -40,10 +60,25 @@
 			  Importe:<br>
 			  <input id="importe" name="importe" type="number" step="0.01"><br>
 			  <br>
-			  <input type="submit" value="Agregar">
-			</form><br><br>
-
-		<a href="factura.groovy"><button>Crear Factura</button></a>
+			  <input type="submit" value="Agregar" class="btn btn-sm btn-secondary">
+			</form><br>
+			<a href="factura.groovy" ><button class="btn btn-sm btn-secondary">Crear Factura</button></a>
+		
 		</div>
+
+		 <div class="mastfoot">
+	            <div class="inner">
+	              <p>Groovlet example for <a href="https://makingdevs.com">Making Devs</a>, by <a href="http://nahumponce.me/">@onahump</a>.</p>
+	            </div>
+	        </div>
+
+	        </div>
+
+	      </div>
+
+	    </div>
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	</body>
 </html>
