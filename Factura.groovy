@@ -34,12 +34,6 @@ class Factura{
 		${conceptos[2]?:""}<br>
 		${conceptos[3]?:""}<br>
 		${conceptos[4]?:""}<br>
-		${conceptos[5]?:""}<br>
-		${conceptos[6]?:""}<br>
-		${conceptos[7]?:""}<br>
-		${conceptos[8]?:""}<br>
-		${conceptos[9]?:""}<br>
-		${conceptos[10]?:""} <br>
 
 
 						  	Subtotal: \$ ${subtotal}<br>
