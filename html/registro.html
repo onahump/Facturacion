@@ -2,8 +2,9 @@
 <html lang="es-MX">
 	<head>
 		<meta charset="UTF-8">
-		<title>Alta de Facturación</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<title>Facturación Making Devs</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<link href="http://v4-alpha.getbootstrap.com/examples/cover/cover.css" rel="stylesheet">
 		<script>
 			function validandoFormulario(){
 			    var txtNombreEmisor = document.getElementById("nombre_emisor").value;
@@ -33,24 +34,63 @@
 			}
 		</script>
 	</head>
-	<body>
-		<div>
-		  <h1 align="center">Alta de facturas</h1>
-		</div>
-		<div>
-			<p>Contesta el siguiente formulario:</p>
-			<form name="formularioRegistro" action="concepto.groovy" onsubmit="return validandoFormulario()" method="POST" autocomplete="on">
-			  Nombre del Emisor:<br>
-			  <input id="nombre_emisor" name="nombre_emisor" type="text"><br>
-			  RFC del Emisor:<br>
-			  <input id="rfc_emisor" name="rfc_emisor" type="text" maxlength="13"><br>
-			  Nombre del Receptor:<br>
-			  <input id="nombre_receptor" name="nombre_receptor" type="text"><br>
-			  RFC del Receptor:<br>
-			  <input id="rfc_receptor" name="rfc_receptor" type="text" maxlength="13"><br>
-			  <br>
-			  <input type="submit" value="Siguiente">
-			</form>
-		</div>
+		<body>
+
+	    <div class="site-wrapper">
+
+	      <div class="site-wrapper-inner">
+
+	        <div class="cover-container">
+
+
+		     <div class="masthead clearfix">
+		        <div class="inner">
+		          <h3 class="masthead-brand">Making Devs</h3>
+		          <nav class="nav nav-masthead">
+		            <a class="nav-link active" href="index.groovy">Inicio</a>
+		            <a class="nav-link" href="registro.groovy">Registro</a>
+		            <a class="nav-link" href="buscarFactura.groovy">Busqueda</a>
+		          </nav>
+		        </div>
+		    </div>
+
+	        <div>
+				<div>
+					<h3>Registro de Factura</h3><br>
+				</div>
+				<div class="table-responsive">
+					<div>
+						<p>Ingresa los datos del emisor y receptor:</p>
+						<form name="formularioRegistro" action="concepto.groovy" onsubmit="return validandoFormulario()" method="POST" autocomplete="on">
+						  Nombre del Emisor:<br>
+						  <input id="nombre_emisor" name="nombre_emisor" type="text"><br>
+						  RFC del Emisor:<br>
+						  <input id="rfc_emisor" name="rfc_emisor" type="text" maxlength="13"><br>
+						  Nombre del Receptor:<br>
+						  <input id="nombre_receptor" name="nombre_receptor" type="text"><br>
+						  RFC del Receptor:<br>
+						  <input id="rfc_receptor" name="rfc_receptor" type="text" maxlength="13"><br>
+						  <br>
+						  <input type="submit" value="Siguiente" class="btn btn-sm btn-secondary">
+						</form>
+					</div>
+				</div>
+	        </div>
+
+	        <div class="mastfoot">
+	            <div class="inner">
+	              <p>Groovlet example for <a href="https://makingdevs.com">Making Devs</a>, by <a href="http://nahumponce.me/">@onahump</a>.</p>
+	            </div>
+	        </div>
+
+	        </div>
+
+	      </div>
+
+	    </div>
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	</body>
 </html>
+
