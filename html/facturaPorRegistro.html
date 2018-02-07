@@ -1,22 +1,50 @@
-<!DOCTYPE html>
 <html lang="es-MX">
 	<head>
 		<meta charset="UTF-8">
 		<title>Facturación Making Devs</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://v4-alpha.getbootstrap.com/examples/cover/cover.css">
 	</head>
 	<body>
 
-		<div>
-			<h1 align="center">
-			   Busqueda de Factura por Registro
-			</h1>
-		</div>
+	<div class="site-wrapper">
 
-		<div>
-			<h3>Tu factura registrada es la siguiente</h3><br>
-			<p>${factura}</p>
-			 <a href="index.groovy"><button>Finalizar</button></a><br> 
-			 <a href="busquedaPorRegistro.groovy"><button>Regresar</button></a>
-		</div>
+	     <div class="site-wrapper-inner">
+
+	        <div class="cover-container">
+
+		         <div class="masthead clearfix">
+		            <div class="inner">
+		              <h3 class="masthead-brand">Making Devs</h3>
+		              <nav class="nav nav-masthead">
+		                <a class="nav-link active" href="index.groovy">Inicio</a>
+		                <a class="nav-link" href="registro.groovy">Registro</a>
+		                <a class="nav-link" href="buscarFactura.groovy">Busqueda</a>
+		              </nav>
+		            </div>
+		        </div>
+
+		        <div class="inner cover">
+		           <h3>Tu factura registrada es la siguiente</h3><br>
+				   <p>${factura}</p>
+					 <a href="index.groovy"><button class="btn btn-sm btn-secondary">Finalizar</button></a>
+			 		 <a href="busquedaPorRegistro.groovy"><button class="btn btn-sm btn-secondary">Regresar</button></a>
+		        </div>
+
+		        <div class="mastfoot">
+		            <div class="inner">
+		              <p>Groovlet example for <a href="https://makingdevs.com">Making Devs</a>, by <a href="http://nahumponce.me/">@onahump</a>.</p>
+		            </div>
+		        </div>
+
+	        </div>
+
+	     </div>
+
+    </div>
+
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	</body>
 </html>
