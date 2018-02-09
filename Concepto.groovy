@@ -8,6 +8,6 @@ class Concepto{
 	}
 
 	String toString(){
-	  "Cantidad: ${cantidad}  Descripcion: ${descripcion} Importe: ${importeTotal}"
+	  "Cantidad: ${cantidad}  Descripcion: ${descripcion} Importe: ${importe}"
 	}
 }
