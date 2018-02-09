@@ -10,7 +10,7 @@ class Factura{
 	}
 
 	BigDecimal getSubtotal(){
-		conceptos.importe.sum()
+		conceptos.importeTotal.sum()
 		//(conceptos[0]?.importe ?:0) + (conceptos[1]?.importe ?:0)
 	}
 
