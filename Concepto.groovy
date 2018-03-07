@@ -1,6 +1,6 @@
 class Concepto{
 	Integer cantidad
-	String descripcion 
+	String descripcion
 	BigDecimal importe
 
 	BigDecimal getImporteTotal(){
@@ -8,6 +8,6 @@ class Concepto{
 	}
 
 	String toString(){
-	  "Cantidad: ${cantidad}  Descripcion: ${descripcion} Importe: ${importe}"
+	  "Cantidad: ${cantidad}  Descripcion: ${descripcion} Importe: ${importeTotal}"
 	}
 }
