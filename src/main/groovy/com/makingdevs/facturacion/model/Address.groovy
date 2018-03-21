@@ -6,10 +6,11 @@ import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Column
+import javax.persistence.OneToOne
 
 
 @Entity
-@Table(name = "Address")
+@Table(name = "ADDRESS")
 class Address{
 
 	@Id
@@ -38,5 +39,7 @@ class Address{
 	@Column(name = "COUNTRY")
 	String country
 
+	@OneToOne(mappedBy = "ADDRESS")
+	InvoiceEntity invoiceEntity
 
 }
