@@ -7,27 +7,27 @@ import com.makingdevs.facturacion.model.Address
 import com.makingdevs.facturacion.repository.AddressRepository
 
 @Service
-public class AddressServiceImpl implements AddressService{
+class AddressServiceImpl implements AddressService{
 	
 	@Autowired
 	AddressRepository addressRepository
 
-	public Iterable<Address> listAllAddresses(){
+	Iterable<Address> listAllAddresses(){
 		addressRepository.findAll()
 	}
 
 	@Override
-	public Address getAddressById(Integer id){
+	Address getAddressById(Integer id){
 		addressRepository.findOne(id)
 	}
 
 	@Override
-	public Address saveAddress(Address address){
+	Address saveAddress(Address address){
 		addressRepository.save(address)
 	}
 
 	@Override
-	public Address deleteAddress(Integer id){
+	Address deleteAddress(Integer id){
 		addressRepository.delete(id)
 	}
 
