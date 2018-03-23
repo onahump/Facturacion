@@ -27,6 +27,11 @@ class InvoiceEntityController{
     	"invoiceEntityForm"
     }
 
+	@RequestMapping("invoiceEntity/{id}", method= RequestMethod.GET)
+	String showInovoiceEntity(Model model){
+		model.addAttribute("invoiceEntity", invoiceEntityService.getInvoiceEntityById())
+		"showInovoiceEntity"	
+	}
     @RequestMapping()
 
 }
