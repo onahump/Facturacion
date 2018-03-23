@@ -32,6 +32,13 @@ class InvoiceEntityController{
 		model.addAttribute("invoiceEntity", invoiceEntityService.getInvoiceEntityById())
 		"showInovoiceEntity"	
 	}
+
+	@RequestMapping(value = "/invoiceEntities", method= RequestMethod.GET)
+	String allInvoiceEntities(Model model){
+		model.addAttribute("invoiceEntities",invoiceEntityService.listAllInvoiceEntities())
+		"invoiceEntities"
+	}
+	
     @RequestMapping()
 
 }
