@@ -19,7 +19,7 @@ class InvoiceEntity{
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	@Column(name="ID_INVOICE_ENTITY")
-	Interger id
+	Integer id
 
 	@Column(name="BUSSISNESS_NAME")
 	String bussisnesName
