@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 
 import com.makingdevs.facturacion.service.InvoiceEntityService
+import com.makingdevs.facturacion.service.AddressService
 import com.makingdevs.facturacion.model.Address
 import com.makingdevs.facturacion.model.InvoiceEntity
 
@@ -26,7 +27,7 @@ class InvoiceEntityController{
     					   invoiceEntity:new InvoiceEntity())
     	"invoiceEntityForm"
     }
-
+    /*
 	@RequestMapping("invoiceEntity/{id}", method= RequestMethod.GET)
 	String showInovoiceEntity(Model model){
 		model.addAttribute("invoiceEntity", invoiceEntityService.getInvoiceEntityById())
@@ -37,8 +38,6 @@ class InvoiceEntityController{
 	String allInvoiceEntities(Model model){
 		model.addAttribute("invoiceEntities",invoiceEntityService.listAllInvoiceEntities())
 		"invoiceEntities"
-	}
+	}*/
 	
-    @RequestMapping()
-
 }
