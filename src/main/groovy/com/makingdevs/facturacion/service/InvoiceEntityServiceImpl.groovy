@@ -1,10 +1,9 @@
 package com.makingdevs.facturacion.service
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Override
 import org.springframework.stereotype.Service
 
-import com.makingdevs.facturacion.model.Address
+import com.makingdevs.facturacion.model.InvoiceEntity
 import com.makingdevs.facturacion.repository.InvoiceEntityRepository
 
 @Service
